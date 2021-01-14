@@ -12,7 +12,7 @@ import Data
 class RemoteAddAccountTests: XCTestCase {
     // - MARK: Request Tests
     func test_add_should_call_httpClient_with_correct_url() {
-        let url = URL(string: "http://any-url.com")!
+        let url = makeUrl()
         let (systemUnderTest, httpClientSpy) = makeSystemUnderTest(url: url)
         systemUnderTest.add(addAccountModel: makeAddAccountModel()) { _ in }
         XCTAssertEqual(httpClientSpy.urls, [url])
@@ -44,7 +44,7 @@ class RemoteAddAccountTests: XCTestCase {
     func test_add_should_complete_with_error_if_client_completes_with_invalid_data() {
         let (systemUnderTest, httpClientSpy) = makeSystemUnderTest()
         expect(systemUnderTest, completeWith: .failure(.unexpected), when: {
-            httpClientSpy.completeWithData(Data("invalid_data".utf8))
+            httpClientSpy.completeWithData(makeInvalidData())
         })
     }
 }
@@ -72,6 +72,14 @@ extension RemoteAddAccountTests {
         }
         action()
         wait(for: [expec], timeout: 1)
+    }
+    
+    func makeInvalidData() -> Data {
+        return Data("invalid_data".utf8)
+    }
+    
+    func makeUrl() -> URL {
+        return URL(string: "http://any-url.com")!
     }
     
     func makeAddAccountModel() -> AddAccountModel {
