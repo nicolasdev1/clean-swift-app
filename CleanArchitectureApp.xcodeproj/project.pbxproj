@@ -12,6 +12,7 @@
 		E5150F9E25B096C800262235 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5150F9D25B096C800262235 /* HttpPostClient.swift */; };
 		E56700E025B0B89600036538 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56700DF25B0B89600036538 /* DomainError.swift */; };
 		E56700F025B0BAD400036538 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56700EF25B0BAD400036538 /* HttpError.swift */; };
+		E567012F25B0C29100036538 /* DataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567012E25B0C29100036538 /* DataExt.swift */; };
 		E583EAC025ACD68A00430E88 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = E583EABE25ACD68A00430E88 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E583EAC625ACD6DE00430E88 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E583EAC525ACD6DE00430E88 /* AddAccount.swift */; };
 		E583EACD25ACD86000430E88 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E583EACC25ACD86000430E88 /* AccountModel.swift */; };
@@ -59,6 +60,7 @@
 		E5150F9D25B096C800262235 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
 		E56700DF25B0B89600036538 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		E56700EF25B0BAD400036538 /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
+		E567012E25B0C29100036538 /* DataExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExt.swift; sourceTree = "<group>"; };
 		E583EABC25ACD68A00430E88 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E583EABE25ACD68A00430E88 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		E583EABF25ACD68A00430E88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,6 +151,14 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		E567012D25B0C27500036538 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E567012E25B0C29100036538 /* DataExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E583EAA025ACD5FD00430E88 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 		E583EAD925ACD8C500430E88 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E567012D25B0C27500036538 /* Extensions */,
 				E5150FAD25B0973C00262235 /* UseCases */,
 				E5150FAE25B0974300262235 /* Http */,
 				E583EADA25ACD8C500430E88 /* Data.h */,
@@ -372,6 +383,7 @@
 				E5150F9E25B096C800262235 /* HttpPostClient.swift in Sources */,
 				E56700F025B0BAD400036538 /* HttpError.swift in Sources */,
 				E5150F9825B0969500262235 /* RemoteAddAccount.swift in Sources */,
+				E567012F25B0C29100036538 /* DataExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
