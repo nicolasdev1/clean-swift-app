@@ -160,8 +160,8 @@
 		E583EABD25ACD68A00430E88 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				E5150FAC25B0973300262235 /* Models */,
 				E5150FAB25B0972A00262235 /* UseCases */,
+				E5150FAC25B0973300262235 /* Models */,
 				E583EABE25ACD68A00430E88 /* Domain.h */,
 				E583EABF25ACD68A00430E88 /* Info.plist */,
 			);
@@ -171,8 +171,8 @@
 		E583EAD925ACD8C500430E88 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E5150FAE25B0974300262235 /* Http */,
 				E5150FAD25B0973C00262235 /* UseCases */,
+				E5150FAE25B0974300262235 /* Http */,
 				E583EADA25ACD8C500430E88 /* Data.h */,
 				E583EADB25ACD8C500430E88 /* Info.plist */,
 			);
