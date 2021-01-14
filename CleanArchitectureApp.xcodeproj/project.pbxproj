@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E5150F8625B095C500262235 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5150F8525B095C500262235 /* Model.swift */; };
+		E5150F9825B0969500262235 /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5150F9725B0969500262235 /* RemoteAddAccount.swift */; };
+		E5150F9E25B096C800262235 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5150F9D25B096C800262235 /* HttpPostClient.swift */; };
 		E583EAC025ACD68A00430E88 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = E583EABE25ACD68A00430E88 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E583EAC625ACD6DE00430E88 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E583EAC525ACD6DE00430E88 /* AddAccount.swift */; };
 		E583EACD25ACD86000430E88 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E583EACC25ACD86000430E88 /* AccountModel.swift */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		E5150F8525B095C500262235 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		E5150F9725B0969500262235 /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
+		E5150F9D25B096C800262235 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
 		E583EABC25ACD68A00430E88 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E583EABE25ACD68A00430E88 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		E583EABF25ACD68A00430E88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 		E583EAD925ACD8C500430E88 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E5150F9725B0969500262235 /* RemoteAddAccount.swift */,
+				E5150F9D25B096C800262235 /* HttpPostClient.swift */,
 				E583EADA25ACD8C500430E88 /* Data.h */,
 				E583EADB25ACD8C500430E88 /* Info.plist */,
 			);
@@ -242,6 +248,7 @@
 					};
 					E583EAD725ACD8C500430E88 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 					};
 					E583EADF25ACD8C500430E88 = {
 						CreatedOnToolsVersion = 12.3;
@@ -307,6 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5150F9E25B096C800262235 /* HttpPostClient.swift in Sources */,
+				E5150F9825B0969500262235 /* RemoteAddAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +521,7 @@
 		E583EAEA25ACD8C600430E88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -530,6 +540,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -537,6 +548,7 @@
 		E583EAEB25ACD8C600430E88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -562,6 +574,7 @@
 		E583EAED25ACD8C600430E88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DataTests/Info.plist;
@@ -581,6 +594,7 @@
 		E583EAEE25ACD8C600430E88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DataTests/Info.plist;
