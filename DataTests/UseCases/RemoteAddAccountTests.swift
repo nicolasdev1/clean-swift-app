@@ -47,6 +47,16 @@ class RemoteAddAccountTests: XCTestCase {
             httpClientSpy.completeWithData(makeInvalidData())
         })
     }
+    
+    func test_add_should_not_complete_if_systemUnderTest_has_been_deallocated() {
+        let httpClientSpy = HttpClientSpy()
+        var systemUnderTest: RemoteAddAccount? = RemoteAddAccount(url: makeUrl(), httpClient: httpClientSpy)
+        var result: Result<AccountModel, DomainError>?
+        systemUnderTest?.add(addAccountModel: makeAddAccountModel()) { result = $0 }
+        systemUnderTest = nil
+        httpClientSpy.completeWithError(.noConnectivity)
+        XCTAssertNil(result)
+    }
 }
 
 // - MARK: Extensions Tests
