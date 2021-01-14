@@ -51,22 +51,30 @@ class RemoteAddAccountTests: XCTestCase {
 
 // - MARK: Extensions Tests
 extension RemoteAddAccountTests {
-    func makeSystemUnderTest(url: URL = URL(string: "http://any-url.com")!) -> (systemUnderTest: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
+    func makeSystemUnderTest(url: URL = URL(string: "http://any-url.com")!, file: StaticString = #file, line: UInt = #line) -> (systemUnderTest: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let systemUnderTest = RemoteAddAccount(url: url, httpClient: httpClientSpy)
+        checkMemoryLeak(for: systemUnderTest, file: file, line: line)
+        checkMemoryLeak(for: httpClientSpy, file: file, line: line)
         return (systemUnderTest, httpClientSpy)
     }
     
-    func expect(_ systemUnderTest: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void) {
+    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, file: file, line: line)
+        }
+    }
+    
+    func expect(_ systemUnderTest: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let expec = expectation(description: "waiting")
         systemUnderTest.add(addAccountModel: makeAddAccountModel()) { receivedResult in
             switch (expectedResult, receivedResult) {
             case (.failure(let expectedError), .failure(let receivedError)):
-                XCTAssertEqual(expectedError, receivedError)
+                XCTAssertEqual(expectedError, receivedError, file: file, line: line)
             case (.success(let expectedAccount), .success(let receivedAccount)):
-                XCTAssertEqual(expectedAccount, receivedAccount)
+                XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)
             default:
-                XCTFail("Expected \(expectedResult) received \(receivedResult) instead.")
+                XCTFail("Expected \(expectedResult) received \(receivedResult) instead.", file: file, line: line)
             }
             expec.fulfill()
         }
