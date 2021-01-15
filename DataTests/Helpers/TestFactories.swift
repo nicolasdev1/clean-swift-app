@@ -8,6 +8,10 @@
 import Foundation
 import Domain
 
+func makeValidData() -> Data {
+    return Data("{\"name\":\"Any Name\"}".utf8)
+}
+
 func makeInvalidData() -> Data {
     return Data("invalid_data".utf8)
 }
