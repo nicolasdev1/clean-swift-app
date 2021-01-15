@@ -61,7 +61,7 @@ class RemoteAddAccountTests: XCTestCase {
 
 // - MARK: Extensions Tests
 extension RemoteAddAccountTests {
-    func makeSystemUnderTest(url: URL = URL(string: "http://any-url.com")!, file: StaticString = #file, line: UInt = #line) -> (systemUnderTest: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
+    func makeSystemUnderTest(url: URL = makeUrl(), file: StaticString = #file, line: UInt = #line) -> (systemUnderTest: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let systemUnderTest = RemoteAddAccount(url: url, httpClient: httpClientSpy)
         checkMemoryLeak(for: systemUnderTest, file: file, line: line)
