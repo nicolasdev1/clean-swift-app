@@ -24,6 +24,10 @@ func makeError() -> Error {
     return NSError(domain: "any_error", code: 0)
 }
 
+func makeHttpResponse(statusCode: Int = 200) -> HTTPURLResponse {
+    return HTTPURLResponse(url: makeUrl(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+}
+
 func makeAccountModel() -> AccountModel {
     return AccountModel(id: "any_id", name: "Any Name", email: "any_email@mail.com", password: "any_password")
 }
