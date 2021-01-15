@@ -39,11 +39,13 @@ class AlamofireAdapterTests: XCTestCase {
 }
 
 extension AlamofireAdapterTests {
-    func makeSystemUnderTest() -> AlamofireAdapter {
+    func makeSystemUnderTest(file: StaticString = #file, line: UInt = #line) -> AlamofireAdapter {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
         let session = Session(configuration: configuration)
-        return AlamofireAdapter(session: session)
+        let systemUnderTest = AlamofireAdapter(session: session)
+        checkMemoryLeak(for: systemUnderTest, file: file, line: line)
+        return systemUnderTest
     }
     
     func testRequestFor(url: URL = makeUrl(), data: Data?, action: @escaping (URLRequest) -> Void) {
