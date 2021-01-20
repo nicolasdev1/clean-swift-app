@@ -46,18 +46,6 @@ class AlamofireAdapterTests: XCTestCase {
         expectResult(.failure(.noConnectivity), when: (data: nil, response: nil, error: makeError()))
     }
     
-    func test_post_should_complete_with_data_when_request_completes_with_200() {
-        expectResult(.success(makeValidData()), when: (data: makeValidData(), response: makeHttpResponse(), error: nil))
-    }
-    
-    func test_post_should_complete_with_no_data_when_request_completes_with_204() {
-        expectResult(.success(nil), when: (data: nil, response: makeHttpResponse(statusCode: 204), error: nil))
-        
-        expectResult(.success(nil), when: (data: makeEmptyData(), response: makeHttpResponse(statusCode: 204), error: nil))
-        
-        expectResult(.success(nil), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 204), error: nil))
-    }
-    
     func test_post_should_complete_with_error_when_request_completes_with_non_200() {
         expectResult(.failure(.badRequest), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 400), error: nil))
         
@@ -79,6 +67,18 @@ class AlamofireAdapterTests: XCTestCase {
         
         expectResult(.failure(.noConnectivity), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 100), error: nil))
     }
+    
+    func test_post_should_complete_with_data_when_request_completes_with_200() {
+        expectResult(.success(makeValidData()), when: (data: makeValidData(), response: makeHttpResponse(), error: nil))
+    }
+    
+    func test_post_should_complete_with_no_data_when_request_completes_with_204() {
+        expectResult(.success(nil), when: (data: nil, response: makeHttpResponse(statusCode: 204), error: nil))
+        
+        expectResult(.success(nil), when: (data: makeEmptyData(), response: makeHttpResponse(statusCode: 204), error: nil))
+        
+        expectResult(.success(nil), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 204), error: nil))
+    }
 }
 
 // - MARK: Extension Tests
@@ -97,7 +97,7 @@ extension AlamofireAdapterTests {
         let expec = expectation(description: "waiting")
         systemUnderTest.post(to: url, with: data) { _ in expec.fulfill() }
         var request: URLRequest?
-        UrlProtocolStub.observeRequest { request = $0}
+        UrlProtocolStub.observeRequest { request = $0 }
         wait(for: [expec], timeout: 1)
         action(request!)
     }
