@@ -24,23 +24,30 @@ public final class SignUpPresenter {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
         } else {
             let addAccountModel = AddAccountModel(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
-            addAccount.add(addAccountModel: addAccountModel) { _ in }
+            addAccount.add(addAccountModel: addAccountModel) { result in
+                switch result {
+                case .failure:
+                    self.alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: "Ocorreu algo inesperado, tente novamente em alguns instantes."))
+                case .success:
+                    break
+                }
+            }
         }
     }
     
     private func validate(viewModel: SignUpViewModel) -> String? {
         if viewModel.name == nil || viewModel.name!.isEmpty {
-            return "O campo Nome é obrigatório"
+            return "O campo Nome é obrigatório."
         } else if viewModel.email == nil || viewModel.email!.isEmpty {
-            return "O campo E-mail é obrigatório"
+            return "O campo E-mail é obrigatório."
         } else if viewModel.password == nil || viewModel.password!.isEmpty {
-            return "O campo Senha é obrigatório"
+            return "O campo Senha é obrigatório."
         } else if viewModel.passwordConfirmation == nil || viewModel.passwordConfirmation!.isEmpty {
-            return "O campo Confirmar Senha é obrigatório"
+            return "O campo Confirmar Senha é obrigatório."
         } else if viewModel.password != viewModel.passwordConfirmation {
-            return "O campo Confirmar Senha é inválido"
+            return "O campo Confirmar Senha é inválido."
         } else if !emailValidator.isValid(email: viewModel.email!) {
-            return "O campo E-mail é inválido"
+            return "O campo E-mail é inválido."
         }
         return nil
     }
