@@ -24,10 +24,10 @@ public final class SignUpPresenter {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
         } else {
             let addAccountModel = AddAccountModel(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
-            addAccount.add(addAccountModel: addAccountModel) { result in
+            addAccount.add(addAccountModel: addAccountModel) { [weak self] result in
                 switch result {
                 case .failure:
-                    self.alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: "Ocorreu algo inesperado, tente novamente em alguns instantes."))
+                    self?.alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: "Ocorreu algo inesperado, tente novamente em alguns instantes."))
                 case .success:
                     break
                 }

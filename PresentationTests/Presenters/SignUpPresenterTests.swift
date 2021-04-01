@@ -108,15 +108,17 @@ class SignUpPresenterTests: XCTestCase {
             XCTAssertEqual(viewModel, self?.makeErrorAlertViewModel(message: "Ocorreu algo inesperado, tente novamente em alguns instantes."))
             expec.fulfill()
         }
-        systemUnderTest.signUp(viewModel: makeSignUpViewModel())
+        systemUnderTest.signUp(viewModel: makeSignUpViewModel())  
         addAccountSpy.completeWithError(.unexpected)
         wait(for: [expec], timeout: 1)
     }
 }
 
 extension SignUpPresenterTests {
-    func makeSystemUnderTest(alertView: AlertViewSpy = AlertViewSpy(), emailValidator: EmailValidatorSpy = EmailValidatorSpy(), addAccount: AddAccountSpy = AddAccountSpy()) -> SignUpPresenter {
-        return SignUpPresenter(alertView: alertView, emailValidator: emailValidator, addAccount: addAccount)
+    func makeSystemUnderTest(alertView: AlertViewSpy = AlertViewSpy(), emailValidator: EmailValidatorSpy = EmailValidatorSpy(), addAccount: AddAccountSpy = AddAccountSpy(), file: StaticString = #file, line: UInt = #line) -> SignUpPresenter {
+        let systemUnderTest: SignUpPresenter = SignUpPresenter(alertView: alertView, emailValidator: emailValidator, addAccount: addAccount)
+        checkMemoryLeak(for: systemUnderTest, file: file, line: line)
+        return systemUnderTest
     }
     
     func makeSignUpViewModel(name: String? = "Any Name", email: String? = "any_email@mail.com", password: String? = "any_password", passwordConfirmation: String? = "any_password") -> SignUpViewModel {
